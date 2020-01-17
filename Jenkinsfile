@@ -1,3 +1,18 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo "Hello World"'
+                sh '''
+                    echo "Multiline shell steps works too"
+                    ls -lah
+                '''
+            }
+        }
+    }
+}
+
 stage("docker_scan"){
       sh '''
         docker run -d --name db arminc/clair-db
