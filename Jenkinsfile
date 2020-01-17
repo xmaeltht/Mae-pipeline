@@ -1,4 +1,5 @@
 stage("docker_scan"){
+  steps {
       sh '''
         docker run -d --name clair-db arminc/clair-db
         sleep 15 # wait for db to come up
@@ -7,4 +8,4 @@ stage("docker_scan"){
         ./clair-scanner --ip=${IP} tomcat:latest || exit 0
       '''
     }
-
+}
